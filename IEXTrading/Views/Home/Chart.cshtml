@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Chart";
+}
+
+<h2>Chart</h2>
+
+<hr />
+
+
+<form asp-controller="Home" asp-action="Chart" method="get">
+    <select name="symbol">
+        @foreach (var hospital in Model.Hospital)
+        {
+            <option value=@hospital.symbol selected>@hospital.name</option>
+        }
+    </select>
+    <input type="submit" value="Get Chart" />
+</form>
+@if (Model.Hospital != null)
+{
+    var hos = Model.Hospital;
+    <hr />
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    Current Chart Data
+                    <table>
+                        <tr>
+                            <td>
+                                Hospital
+                            </td>
+                            <td>
+                                @hos.hospital_overall_rating
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Open
+                            </td>
+                            <td>
+                                @hos.city
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                High
+                            </td>
+                            <td>
+                                @hos.hospital_name
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Close
+                            </td>
+                            <td>
+                                @hos.phone_number
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </td>
+                <td>
+                    <div>
+                        <canvas id="myChart" height="500" width="800"></canvas>
+                    </div>
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="SaveCharts" asp-route-symbol="@Model.Current.hospital"><img src="~/images/button_save-data.png" /></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<script>
+    getChart("@Model.hospital_name", "@Model.hospital_overall_rating", "@Model.city", @Model.phone_number);
+    alertDbSave(@ViewBag.dbSuccessChart);
+</script>
