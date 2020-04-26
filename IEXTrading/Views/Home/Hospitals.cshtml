@@ -2,7 +2,7 @@
 @model IEnumerable<GHI.Models.Hospital>
 
 @{
-    ViewData["Title"] = "Hospital";
+    ViewData["Title"] = "Hospitals";
 }
 
     <head>
@@ -33,7 +33,8 @@
             <div class="topnav" id="myTopnav">
                 <a asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
                 <a asp-area="" asp-controller="Home" asp-action="Form">HOSPITAL SEARCH</a>
-                <a class="active"  asp-area="" asp-controller="Home" asp-action="Hospitals">HOSPITALS</a>
+                <a class="active" asp-area="" asp-controller="Home" asp-action="Hospitals">HOSPITALS</a>
+                <a asp-area="" asp-controller="Home" asp-action="Chart">CHART</a>
                 <a asp-area="" asp-controller="Home" asp-action="About_us">ABOUT US</a>
             </div>
         </div>

@@ -61,6 +61,10 @@ namespace MVCTemplate.Controllers
             return View("Hospitals" , details);
         }
 
+        public IActionResult Chart()
+        {
+            return View();
+        }
         //public IActionResult Chart(string symbol)
         //{
         //    //Set ViewBag variable first
@@ -103,18 +107,7 @@ namespace MVCTemplate.Controllers
         }
 
 
-        //public async Task<IActionResult> Index(string searchString)
-        //{
-        //    var data = from m in context.HospitalInfo
-        //               select m;
-
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        hospital_name = hospital_name.Where(s => s.Title.Contains(searchString));
-        //    }
-
-        //    return View(await movies.ToListAsync());
-        //}
+       
 
         public IActionResult savedata()
         {

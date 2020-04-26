@@ -24,6 +24,7 @@
             <a asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
             <a asp-area="" asp-controller="Home" asp-action="Form">HOSPITAL SEARCH</a>
             <a asp-area="" asp-controller="Home" asp-action="Hospitals">HOSPITALS</a>
+            <a asp-area="" asp-controller="Home" asp-action="Chart">CHART</a>
             <a class="active" asp-area="" asp-controller="Home" asp-action="About_us">ABOUT US</a>
         </div>
     </div>
@@ -81,7 +82,18 @@
                             He currently works as an Industrial Engineer. Brandon helped develop the formatting of this web page.
                         </p>
                     </div>
-                </div>
+                    <div>
+                        <h1>Data Information</h1>
+                        <p>
+                            <span style="color:black;">
+                                <b>
+                                    This application provides the data of hospitals that have been registered with Medicare via their public <a href="https://data.medicare.gov/Hospital-Compare/Hospital-General-Information/xubh-q36u">API</a>.
+                                    The list includes addresses, phone numbers, hospital type, and overall hospital rating.
+                                </b>
+                            </span>
+                        </p>
+                    </div>
+                    </div>
             
         </div>
         <script>

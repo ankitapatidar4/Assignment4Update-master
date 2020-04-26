@@ -44,35 +44,35 @@ namespace GHI.Infrastructure.GHIListHandler
             return hospitals;
         }
 
-        public List<Hospital> GetChart(string symbol)
-        {
-            //Using the format method.
-            //string IEXTrading_API_PATH = BASE_URL + "stock/{0}/batch?types=chart&range=1y";
-            //IEXTrading_API_PATH = string.Format(IEXTrading_API_PATH, symbol);
+        //public List<Hospital> GetChart(string symbol)
+        //{
+        //    //Using the format method.
+        //    //string IEXTrading_API_PATH = BASE_URL + "stock/{0}/batch?types=chart&range=1y";
+        //    //IEXTrading_API_PATH = string.Format(IEXTrading_API_PATH, symbol);
 
-            string GHIHospital_API_PATH = BASE_URL + "?$where=state='FL'";
-            string hospitalList = "";
+        //    string GHIHospital_API_PATH = BASE_URL + "?$where=state='FL'";
+        //    string hospitalList = "";
 
-            string charts = "";
-            List<Hospital> HospitalInfo = new List<Hospital>();
-            httpClient.BaseAddress = new Uri(GHIHospital_API_PATH);
-            HttpResponseMessage response = httpClient.GetAsync(GHIHospital_API_PATH).GetAwaiter().GetResult();
-            if (response.IsSuccessStatusCode)
-            {
-                charts = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            }
-            if (!charts.Equals(""))
-            {
-                ChartRoot root = JsonConvert.DeserializeObject<ChartRoot>(charts, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                HospitalInfo = root.chart.ToList();
-            }
-            //make sure to add the symbol the chart
-            foreach (Hospital Hospital in HospitalInfo)
-            {
-                Hospital.hospital_name = symbol;
-            }
+        //    string charts = "";
+        //    List<Hospital> HospitalInfo = new List<Hospital>();
+        //    httpClient.BaseAddress = new Uri(GHIHospital_API_PATH);
+        //    HttpResponseMessage response = httpClient.GetAsync(GHIHospital_API_PATH).GetAwaiter().GetResult();
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        charts = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+        //    }
+        //    if (!charts.Equals(""))
+        //    {
+        //        ChartRoot root = JsonConvert.DeserializeObject<ChartRoot>(charts, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+        //        HospitalInfo = root.chart.ToList();
+        //    }
+        //    //make sure to add the symbol the chart
+        //    foreach (Hospital Hospital in HospitalInfo)
+        //    {
+        //        Hospital.hospital_name = symbol;
+        //    }
 
-            return HospitalInfo;
-        }
+        //    return HospitalInfo;
+        //}
     }
 }
